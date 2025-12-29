@@ -1,0 +1,2 @@
+# WsWin
+Einstellung für WsWin
