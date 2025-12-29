@@ -1,0 +1,379 @@
+<!-- %customfile=c:\WSWIN\html\jahreszeiten-archiv\jahreszeiten_%ws_year%.html% -->
+<!-- openfile=jahreszeiten-rekorde2.txt -->
+<!-- openfile=jahreszeiten_2014.txt -->
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Jahreszeiten</title>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META HTTP-EQUIV="Cache-Control" CONTENT="must-revalidate">
+<META HTTP-EQUIV="Refresh" CONTENT="300">
+<meta name="Author" content="© 1999-2005  Werner Krenn">
+<meta name="Date" content="08.01.2005">
+<META NAME="Keywords" CONTENT="Wetter, Auswertung Wetterstation, Wind, Regen, Temperatur, Feuchte, Luftdruck">
+  <link rel="shortcut icon" type="image/x-icon" href="https://wischekurier.info/css/wischekurier.ico">
+<link rel="stylesheet" href="https://wischekurier.info/css/wischekurier.css">
+
+
+<TITLE>Jahreszeiten - Standort %ws_location%</TITLE>
+
+</head>
+
+<!--- Usereinstellungen Anfang --->
+
+%ws_setmem[11]=%ws_year%%  	<!--- %ws_year% od. Jahr --->
+%ws_setmem[12]=%ws_month%%	<!--- %ws_month% od. 11 f&uuml;r abgelaufenen Jahren --->
+%ws_setmem[13]=1%		<!--- Schaltjahr Ja/nein 1/0 --->
+
+
+				<!--- STDV-Werte Temperatur --->
+%ws_setmem[20]=0,3%		<!--- STDV-Werte Winter --->
+%ws_setmem[21]=7,8%		<!--- STDV-Werte Fr&uuml;hling --->
+%ws_setmem[22]=16,7%		<!--- STDV-Werte Sommer --->
+%ws_setmem[23]=9,1%		<!--- STDV-Werte Herbst --->
+
+				<!--- STDV-Werte Niederschlag --->
+%ws_setmem[30]=119%		<!--- STDV-Werte Winter --->
+%ws_setmem[31]=124%		<!--- STDV-Werte Fr&uuml;hlung --->
+%ws_setmem[32]=173%		<!--- STDV-Werte Sommer --->
+%ws_setmem[33]=126%		<!--- STDV-Werte Herbst--->
+
+				<!--- STDV-Werte Sonnenstunden --->
+%ws_setmem[40]=154%		<!--- STDV-Werte Winter --->
+%ws_setmem[41]=514%		<!--- STDV-Werte Fr&uuml;hling --->
+%ws_setmem[42]=668%		<!--- STDV-Werte Sommer --->
+%ws_setmem[43]=310%		<!--- STDV-Werte Herbst--->
+
+
+%ws_setmem[50]=1,00% 		<!--- Holzart: Hartholz - Weichholz 1,00 bis 1,40 # Heiz&ouml;l/Gas: 210 --->
+%ws_setmem[51]=1,00% 		<!--- Grundheizbedarf je nach Objektgr&ouml;sse: 0,50 bis 5,00 (1,00 = Einfamilienhaus) --->
+%ws_setmem[53]=0% 		<!--- &ouml;l/Gas 1/0 wenn Holz, dann egal --->
+
+%ws_setmem[54]=1% 		<!--- Energieleiste an/aus 1/0 --->
+%ws_setmem[55]=0% 		<!--- Sonnenstunden (ID37) an/aus 1/0 --->
+
+<!--- Usereinstellungen Ende --->
+
+
+
+%ws_setmem[15]=%ws_compare[3]=%ws_getmem[13]%~1~29~28%%
+
+<BODY bgColor="#555E75">
+<div align="center">
+<table border="1" width="30%" bgColor="#E9E7E2">
+<TR><TD ALIGN="CENTER" colspan="5"><b><u><font size="5"color="Black"> Die Jahreszeiten %ws_getmem[11]% <font size="3"> (meteorologisch) <font size="1"> Stand: %ws_userdate=%%ws_date% %ws_time%<font size="3"color="Black"></FONT></TD>
+%ws_setmem[1]=%ws_getmem[11]%%
+%ws_setmem[2]=%ws_compare[5]=%ws_getmem[12]%~3~-1~0%%
+%ws_setmem[3]=%ws_calc[+]=%ws_getmem[1]%~%ws_getmem[2]%~0%%
+%ws_setmem[4]=%ws_compare[2]=%ws_getmem[12]%~3~%ws_getmem[11]%~%ws_getmem[3]%%%
+%ws_setmem[5]=%ws_compare[2]=%ws_getmem[12]%~3~%ws_getmem[11]%~%ws_getmem[3]%%%
+
+%ws_setmem[2]=%ws_compare[5]=%ws_getmem[12]%~6~-1~0%%
+%ws_setmem[3]=%ws_calc[+]=%ws_getmem[1]%~%ws_getmem[2]%~0%%
+%ws_setmem[24]=%ws_compare[2]=%ws_getmem[12]%~6~%ws_getmem[11]%~%ws_getmem[3]%%%
+%ws_setmem[25]=%ws_compare[2]=%ws_getmem[12]%~6~%ws_getmem[11]%~%ws_getmem[3]%%%
+
+%ws_setmem[2]=%ws_compare[5]=%ws_getmem[12]%~9~-1~0%%
+%ws_setmem[3]=%ws_calc[+]=%ws_getmem[1]%~%ws_getmem[2]%~0%%
+%ws_setmem[26]=%ws_compare[2]=%ws_getmem[12]%~9~%ws_getmem[11]%~%ws_getmem[3]%%%
+%ws_setmem[27]=%ws_compare[2]=%ws_getmem[12]%~9~%ws_getmem[11]%~%ws_getmem[3]%%%
+
+%ws_setmem[6]=%ws_calc[+]=%ws_getmem[11]%~-1~0%%
+%ws_setmem[7]=%ws_compare[3]=%ws_getmem[12]%~12~%ws_getmem[11]%~%ws_getmem[6]%%%
+%ws_setmem[8]=%ws_calc[+]=%ws_getmem[11]%~1~0%%
+%ws_setmem[9]=%ws_compare[3]=%ws_getmem[12]%~12~%ws_getmem[8]%~%ws_getmem[11]%%%
+%ws_setmem[10]=%ws_compare[3]=%ws_getmem[12]%~12~%ws_getmem[11]%~%ws_getmem[6]%%%
+
+<tr><td align="center" width="7%" height="25"><b><font size="5"color="Black"><nobr>Messwerte <font size="1"></nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="5"color="Black"><nobr>Winter</nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="5"color="Black"><nobr>Fr&uuml;hling</nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="5"color="Black"><nobr>Sommer</nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="5"color="Black"><nobr>Herbst</nobr></font></b></td></tr>
+
+<tr><td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Zeitraum</nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="2"color="Black"><nobr>01.12.%ws_getmem[10]%~%ws_getmem[15]%.02.%ws_getmem[9]%</nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="2"color="Black"><nobr>01.03.%ws_getmem[4]%~31.05.%ws_getmem[5]%</nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="2"color="Black"><nobr>01.06.%ws_getmem[24]%~31.08.%ws_getmem[25]%</nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="2"color="Black"><nobr>01.09.%ws_getmem[26]%~30.11.%ws_getmem[27]%</nobr></font></b></td></tr>
+
+%ws_setmem[11]=%season_avg[2~0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]%%
+%ws_setmem[12]=%season_avg[2~0103%ws_getmem[4]%~3105%ws_getmem[5]%]%%
+%ws_setmem[13]=%season_avg[2~0106%ws_getmem[24]%~3108%ws_getmem[25]%]%%
+%ws_setmem[14]=%season_avg[2~0109%ws_getmem[26]%~3011%ws_getmem[27]%]%%
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Temperatur &Oslash; </nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%ws_getmem[11]%]% <font size="1">
+<BR>(STDV %ws_calc[-]=%ws_getmem[11]%~%ws_getmem[20]%~1% &deg;C)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%ws_getmem[12]%]% <font size="1">
+<BR>(STDV %ws_calc[-]=%ws_getmem[12]%~%ws_getmem[21]%~1% &deg;C)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%ws_getmem[13]%]% <font size="1">
+<BR>(STDV %ws_calc[-]=%ws_getmem[13]%~%ws_getmem[22]%~1% &deg;C)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%ws_getmem[14]%]% <font size="1">
+<br>(STDV %ws_calc[-]=%ws_getmem[14]%~%ws_getmem[23]%~1% &deg;C)</nobr></font></td></tr>
+
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Temperatur min. </nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%season_min[2~0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]%]% <font size="1">
+<br>(%season_mindt[2~0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]%)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%season_min[2~0103%ws_getmem[4]%~3105%ws_getmem[5]%]%]% <font size="1">
+<br>(%season_mindt[2~0103%ws_getmem[4]%~3105%ws_getmem[5]%]%)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%season_min[2~0106%ws_getmem[24]%~3108%ws_getmem[25]%]%]% <font size="1">
+<br>(%season_mindt[2~0106%ws_getmem[4]%~3108%ws_getmem[5]%]%)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%season_min[2~0109%ws_getmem[26]%~3011%ws_getmem[27]%]%]% <font size="1">
+<br>(%season_mindt[2~0109%ws_getmem[4]%~3011%ws_getmem[5]%]%)</nobr></font></td></tr>
+
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Temperatur max. </nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%season_max[2~0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]%]% <font size="1">
+<br>(%season_maxdt[2~0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]%)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%season_max[2~0103%ws_getmem[4]%~3105%ws_getmem[5]%]%]% <font size="1">
+<br>(%season_maxdt[2~0103%ws_getmem[4]%~3105%ws_getmem[5]%]%)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%season_max[2~0106%ws_getmem[24]%~3108%ws_getmem[25]%]%]% <font size="1">
+<br>(%season_maxdt[2~0106%ws_getmem[4]%~3108%ws_getmem[5]%]%)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%season_max[2~0109%ws_getmem[26]%~3011%ws_getmem[27]%]%]% <font size="1">
+<br>(%season_maxdt[2~0109%ws_getmem[4]%~3011%ws_getmem[5]%]%)</nobr></font></td></tr>
+
+%ws_setmem[11]=%season_sum[34~0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]%%
+%ws_setmem[12]=%season_sum[34~0103%ws_getmem[4]%~3105%ws_getmem[5]%]%%
+%ws_setmem[13]=%season_sum[34~0106%ws_getmem[24]%~3108%ws_getmem[25]%]%%
+%ws_setmem[14]=%season_sum[34~0109%ws_getmem[26]%~3011%ws_getmem[27]%]%%
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Niederschlag </nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[11]% <font size="1">
+<br>(STDV %ws_calc[-]=%ws_getmem[11]%~%ws_getmem[30]%~1% mm / %ws_calc1[*]=%ws_calc[/]=%ws_getmem[11]%~%ws_getmem[30]%~3%~100~0% %)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[12]% <font size="1">
+<br>(STDV %ws_calc[-]=%ws_getmem[12]%~%ws_getmem[31]%~1% mm / %ws_calc1[*]=%ws_calc[/]=%ws_getmem[12]%~%ws_getmem[31]%~3%~100~0% %)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[13]% <font size="1">
+<br>(STDV %ws_calc[-]=%ws_getmem[13]%~%ws_getmem[32]%~1% mm / %ws_calc1[*]=%ws_calc[/]=%ws_getmem[13]%~%ws_getmem[32]%~3%~100~0% %)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[14]% <font size="1">
+<br>(STDV %ws_calc[-]=%ws_getmem[14]%~%ws_getmem[33]%~1% mm / %ws_calc1[*]=%ws_calc[/]=%ws_getmem[14]%~%ws_getmem[33]%~3%~100~0% %)</nobr></font></td></tr>
+
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Verdunstung</nobr></font></b></td>
+%ws_setmem[11]=%ws_evapotrans_mpast[12~%ws_getmem[10]%]%%
+%ws_setmem[12]=%ws_evapotrans_mpast[01~%ws_getmem[5]%]%%
+%ws_setmem[13]=%ws_evapotrans_mpast[02~%ws_getmem[5]%]%%
+%ws_setmem[14]=%ws_calcmem[+]=11~13~1%%
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[14]% mm <font size="1"></font></td>
+%ws_setmem[11]=%ws_evapotrans_mpast[03~%ws_getmem[5]%]%%
+%ws_setmem[12]=%ws_evapotrans_mpast[04~%ws_getmem[5]%]%%
+%ws_setmem[13]=%ws_evapotrans_mpast[05~%ws_getmem[5]%]%%
+%ws_setmem[14]=%ws_calcmem[+]=11~13~1%%
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[14]% mm<font size="1"></font></td>
+%ws_setmem[11]=%ws_evapotrans_mpast[06~%ws_getmem[24]%]%%
+%ws_setmem[12]=%ws_evapotrans_mpast[07~%ws_getmem[24]%]%%
+%ws_setmem[13]=%ws_evapotrans_mpast[08~%ws_getmem[24]%]%%
+%ws_setmem[14]=%ws_calcmem[+]=11~13~1%%
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[14]% mm<font size="1"></font></td>
+%ws_setmem[11]=%ws_evapotrans_mpast[09~%ws_getmem[26]%]%%
+%ws_setmem[12]=%ws_evapotrans_mpast[10~%ws_getmem[26]%]%%
+%ws_setmem[13]=%ws_evapotrans_mpast[11~%ws_getmem[26]%]%%
+%ws_setmem[14]=%ws_calcmem[+]=11~13~1%%
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[14]% mm<font size="1"></font></td></tr>
+
+
+
+
+%ws_setmem[11]=%season_sum[37~0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]%%
+%ws_setmem[12]=%season_sum[37~0103%ws_getmem[4]%~3105%ws_getmem[5]%]%%
+%ws_setmem[13]=%season_sum[37~0106%ws_getmem[24]%~3108%ws_getmem[25]%]%%
+%ws_setmem[14]=%season_sum[37~0109%ws_getmem[26]%~3011%ws_getmem[27]%]%%
+%ws_compare[3]=%ws_getmem[55]%~1~~<!---%
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Sonnenstunden </nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[11]% <font size="1">
+<BR>(STDV %ws_calc[-]=%ws_getmem[11]%~%ws_getmem[40]%~1% h / %ws_calc1[*]=%ws_calc[/]=%ws_getmem[11]%~%ws_getmem[40]%~3%~100~0% %)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[12]% <font size="1">
+<BR>(STDV %ws_calc[-]=%ws_getmem[12]%~%ws_getmem[41]%~1% h / %ws_calc1[*]=%ws_calc[/]=%ws_getmem[12]%~%ws_getmem[41]%~3%~100~0% %)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[13]% <font size="1">
+<BR>(STDV %ws_calc[-]=%ws_getmem[13]%~%ws_getmem[42]%~1% h / %ws_calc1[*]=%ws_calc[/]=%ws_getmem[13]%~%ws_getmem[42]%~3%~100~0% %)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[14]% <font size="1">
+<br>(STDV %ws_calc[-]=%ws_getmem[14]%~%ws_getmem[43]%~1% h / %ws_calc1[*]=%ws_calc[/]=%ws_getmem[14]%~%ws_getmem[43]%~3%~100~0% %)</nobr></font></td></tr>
+%ws_compare[3]=%ws_getmem[55]%~1~~--->%
+
+%ws_setmem[11]=%season_avg[35~0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]%%
+%ws_setmem[12]=%season_avg[35~0103%ws_getmem[4]%~3105%ws_getmem[5]%]%%
+%ws_setmem[13]=%season_avg[35~0106%ws_getmem[24]%~3108%ws_getmem[25]%]%%
+%ws_setmem[14]=%season_avg[35~0109%ws_getmem[26]%~3011%ws_getmem[27]%]%%
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Wind &Oslash; </nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[11]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[12]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[13]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[14]% <font size="1"></nobr></font></td></tr>
+
+
+%ws_setmem[11]=%season_avg[45~0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]%%
+%ws_setmem[12]=%season_avg[45~0103%ws_getmem[4]%~3105%ws_getmem[5]%]%%
+%ws_setmem[13]=%season_avg[45~0106%ws_getmem[24]%~3108%ws_getmem[25]%]%%
+%ws_setmem[14]=%season_avg[45~0109%ws_getmem[26]%~3011%ws_getmem[27]%]%%
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>B&ouml;en &Oslash; </nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[11]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[12]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[13]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[14]% <font size="1"></nobr></font></td></tr>
+
+
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Wind max. </nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_max[35~0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]% <font size="1">
+<br>(%season_maxdt[35~0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]%)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_max[35~0103%ws_getmem[4]%~3105%ws_getmem[5]%]% <font size="1">
+<br>(%season_maxdt[35~0103%ws_getmem[4]%~3105%ws_getmem[5]%]%)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_max[35~0106%ws_getmem[24]%~3108%ws_getmem[25]%]% <font size="1">
+<br>(%season_maxdt[35~0106%ws_getmem[4]%~3108%ws_getmem[5]%]%)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_max[35~0109%ws_getmem[26]%~3011%ws_getmem[27]%]% <font size="1">
+<br>(%season_maxdt[35~0109%ws_getmem[4]%~3011%ws_getmem[5]%]%)</nobr></font></td></tr>
+
+
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>B&ouml;en max. </nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_max[45~0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]% <font size="1">
+<br>(%season_maxdt[45~0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]%)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_max[45~0103%ws_getmem[4]%~3105%ws_getmem[5]%]% <font size="1">
+<br>(%season_maxdt[45~0103%ws_getmem[4]%~3105%ws_getmem[5]%]%)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_max[45~0106%ws_getmem[24]%~3108%ws_getmem[25]%]% <font size="1">
+<br>(%season_maxdt[45~0106%ws_getmem[4]%~3108%ws_getmem[5]%]%)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_max[45~0109%ws_getmem[26]%~3011%ws_getmem[27]%]% <font size="1">
+<br>(%season_maxdt[45~0109%ws_getmem[4]%~3011%ws_getmem[5]%]%)</nobr></font></td></tr>
+
+
+%ws_setmem[11]=%season_avg[44~0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]%%
+%ws_setmem[12]=%season_avg[44~0103%ws_getmem[4]%~3105%ws_getmem[5]%]%%
+%ws_setmem[13]=%season_avg[44~0106%ws_getmem[24]%~3108%ws_getmem[25]%]%%
+%ws_setmem[14]=%season_avg[44~0109%ws_getmem[26]%~3011%ws_getmem[27]%]%%
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Windchill &Oslash; </nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%ws_getmem[11]%]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%ws_getmem[12]%]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%ws_getmem[13]%]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%ws_getmem[14]%]% <font size="1"></nobr></font></td></tr>
+
+
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Windchill min. </nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%season_min[44~0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]%]% <font size="1">
+<br>(%season_mindt[44~0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]%)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%season_min[44~0103%ws_getmem[4]%~3105%ws_getmem[5]%]%]% <font size="1">
+<br>(%season_mindt[44~0103%ws_getmem[4]%~3105%ws_getmem[5]%]%)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%season_min[44~0106%ws_getmem[24]%~3108%ws_getmem[25]%]%]% <font size="1">
+<br>(%season_mindt[44~0106%ws_getmem[4]%~3108%ws_getmem[5]%]%)</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_replaceforhtml[%season_min[44~0109%ws_getmem[26]%~3011%ws_getmem[27]%]%]% <font size="1">
+<br>(%season_mindt[44~0109%ws_getmem[4]%~3011%ws_getmem[5]%]%)</nobr></font></td></tr>
+
+%unit_off%
+<TR><TD ALIGN="CENTER" colspan="5"><b><u><font size="4"color="Black"> Klimakenntage<font size="3"color="Black"></FONT></TD></TR>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Frosttage</nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_colddays[0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_colddays[0103%ws_getmem[4]%~3105%ws_getmem[5]%]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_colddays[0106%ws_getmem[24]%~3108%ws_getmem[25]%]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_colddays[0109%ws_getmem[26]%~3011%ws_getmem[27]%]% <font size="1"></nobr></font></td></tr>
+
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Eistage</nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_icedays[0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_icedays[0103%ws_getmem[4]%~3105%ws_getmem[5]%]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_icedays[0106%ws_getmem[24]%~3108%ws_getmem[25]%]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_icedays[0109%ws_getmem[26]%~3011%ws_getmem[27]%]% <font size="1"></nobr></font></td></tr>
+
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Sommertage</nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_warmdays[0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_warmdays[0103%ws_getmem[4]%~3105%ws_getmem[5]%]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_warmdays[0106%ws_getmem[24]%~3108%ws_getmem[25]%]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_warmdays[0109%ws_getmem[26]%~3011%ws_getmem[27]%]% <font size="1"></nobr></font></td></tr>
+
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Hitzetage</nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_hotdays[0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_hotdays[0103%ws_getmem[4]%~3105%ws_getmem[5]%]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_hotdays[0106%ws_getmem[24]%~3108%ws_getmem[25]%]% <font size="1"></nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_hotdays[0109%ws_getmem[26]%~3011%ws_getmem[27]%]% <font size="1"></nobr></font></td></tr>
+
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Regentage >0,3mm</nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_raindaysx[0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%~000,3]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_raindaysx[0103%ws_getmem[4]%~3105%ws_getmem[5]%~000,3]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_raindaysx[0106%ws_getmem[24]%~3108%ws_getmem[25]%~000,3]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_raindaysx[0109%ws_getmem[26]%~3011%ws_getmem[27]%~000,3]%</nobr></font></td></tr>
+
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Niederschlagstage >0,1mm</nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_raindaysx[0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%~000,0]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_raindaysx[0103%ws_getmem[4]%~3105%ws_getmem[5]%~000,0]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_raindaysx[0106%ws_getmem[24]%~3108%ws_getmem[25]%~000,0]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_raindaysx[0109%ws_getmem[26]%~3011%ws_getmem[27]%~000,0]%</nobr></font></td></tr>
+
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Starkwindtage >40 km/h</nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_idhdaysx[35~0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%~000040H]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_idhdaysx[35~0103%ws_getmem[4]%~3105%ws_getmem[5]%~000040H]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_idhdaysx[35~0106%ws_getmem[24]%~3108%ws_getmem[25]%~000040H]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_idhdaysx[35~0109%ws_getmem[26]%~3011%ws_getmem[27]%~000040H]%</nobr></font></td></tr>
+
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Sturmtage >75 km/h</nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_idhdaysx[35~0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%~000075H]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_idhdaysx[35~0103%ws_getmem[4]%~3105%ws_getmem[5]%~000075H]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_idhdaysx[35~0106%ws_getmem[24]%~3108%ws_getmem[25]%~000075H]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_idhdaysx[35~0109%ws_getmem[26]%~3011%ws_getmem[27]%~000075H]%</nobr></font></td></tr>
+
+<TR><TD ALIGN="CENTER" colspan="5"><b><u><font size="4"color="Black">sonstige Kenngr&ouml;ssen<font size="3"color="Black"></FONT></TD></TR>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>W&auml;rmesumme</nobr></font></b></td>
+%ws_setmem[1]=%warmsum_mpast[12~%ws_getmem[10]%]%%
+%ws_setmem[2]=%warmsum_mpast[01~%ws_getmem[9]%]%%
+%ws_setmem[3]=%warmsum_mpast[02~%ws_getmem[9]%]%%
+%ws_setmem[11]=%ws_calcmem[+]=1~3~1%%
+%ws_setmem[1]=%warmsum_mpast[03~%ws_getmem[5]%]%%
+%ws_setmem[2]=%warmsum_mpast[04~%ws_getmem[5]%]%%
+%ws_setmem[3]=%warmsum_mpast[05~%ws_getmem[5]%]%%
+%ws_setmem[12]=%ws_calcmem[+]=1~3~1%%
+%ws_setmem[1]=%warmsum_mpast[06~%ws_getmem[25]%]%%
+%ws_setmem[2]=%warmsum_mpast[07~%ws_getmem[25]%]%%
+%ws_setmem[3]=%warmsum_mpast[08~%ws_getmem[25]%]%%
+%ws_setmem[13]=%ws_calcmem[+]=1~3~1%%
+%ws_setmem[1]=%warmsum_mpast[09~%ws_getmem[27]%]%%
+%ws_setmem[2]=%warmsum_mpast[10~%ws_getmem[27]%]%%
+%ws_setmem[3]=%warmsum_mpast[11~%ws_getmem[27]%]%%
+%ws_setmem[14]=%ws_calcmem[+]=1~3~1%%
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[11]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[12]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[13]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[14]%</nobr></font></td></tr>
+
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>K&auml;ltesumme</nobr></font></b></td>
+%ws_setmem[1]=%icesum_mpast[12~%ws_getmem[10]%]%%
+%ws_setmem[2]=%icesum_mpast[01~%ws_getmem[9]%]%%
+%ws_setmem[3]=%icesum_mpast[02~%ws_getmem[9]%]%%
+%ws_setmem[11]=%ws_calcmem[+]=1~3~1%%
+%ws_setmem[1]=%icesum_mpast[03~%ws_getmem[5]%]%%
+%ws_setmem[2]=%icesum_mpast[04~%ws_getmem[5]%]%%
+%ws_setmem[3]=%icesum_mpast[05~%ws_getmem[5]%]%%
+%ws_setmem[12]=%ws_calcmem[+]=1~3~1%%
+%ws_setmem[1]=%icesum_mpast[06~%ws_getmem[25]%]%%
+%ws_setmem[2]=%icesum_mpast[07~%ws_getmem[25]%]%%
+%ws_setmem[3]=%icesum_mpast[08~%ws_getmem[25]%]%%
+%ws_setmem[13]=%ws_calcmem[+]=1~3~1%%
+%ws_setmem[1]=%icesum_mpast[09~%ws_getmem[27]%]%%
+%ws_setmem[2]=%icesum_mpast[10~%ws_getmem[27]%]%%
+%ws_setmem[3]=%icesum_mpast[11~%ws_getmem[27]%]%%
+%ws_setmem[14]=%ws_calcmem[+]=1~3~1%%
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[11]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[12]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[13]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[14]%</nobr></font></td></tr>
+
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>Heizgradtage</nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_xheatddays[0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_xheatddays[0103%ws_getmem[4]%~3105%ws_getmem[5]%]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_xheatddays[0106%ws_getmem[24]%~3108%ws_getmem[25]%]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%season_xheatddays[0109%ws_getmem[26]%~3011%ws_getmem[27]%]%</nobr></font></td></tr>
+%unit_on%
+
+%ws_setmem[28]=%ws_compare[3]=%ws_getmem[53]%~1~l~m³%%
+%ws_setmem[29]=%ws_compare[3]=%ws_getmem[53]%~1~Heiz&ouml;l~Gas%%
+%ws_setmem[30]=%ws_calc1[/]=%ws_calc[/]=270~%ws_getmem[50]%~2%~%ws_getmem[51]%~2%%
+%ws_setmem[31]=%ws_compare[1]=%ws_getmem[50]%~150~%ws_getmem[29]%~Holzverbrauch%%
+%ws_setmem[32]=%ws_compare[1]=%ws_getmem[50]%~150~%ws_getmem[28]%~rm%%
+
+%ws_compare[3]=%ws_getmem[54]%~1~~<!---%
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_getmem[31]%</nobr></font></b></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_calc[/]=%season_xheatddays[0112%ws_getmem[10]%~%ws_getmem[15]%02%ws_getmem[9]%]%~%ws_getmem[30]%~2% %ws_getmem[32]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_calc[/]=%season_xheatddays[0103%ws_getmem[4]%~3105%ws_getmem[5]%]%~%ws_getmem[30]%~2% %ws_getmem[32]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_calc[/]=%season_xheatddays[0106%ws_getmem[24]%~3108%ws_getmem[25]%]%~%ws_getmem[30]%~2% %ws_getmem[32]%</nobr></font></td>
+<td align="center" width="7%" height="25"><b><font size="4"color="Black"><nobr>%ws_calc[/]=%season_xheatddays[0109%ws_getmem[26]%~3011%ws_getmem[27]%]%~%ws_getmem[30]%~2% %ws_getmem[32]%</nobr></font></td></tr>
+%ws_compare[3]=%ws_getmem[54]%~1~~--->%
+
+<tr><td align="center" colspan="5"><font size="2"color="Black">Script: Matthias Kr&uuml;cke, www.woldegk-wetter.de</font></td></tr>
+</table>
+</body>
+
+
+
+
+
+</html>
